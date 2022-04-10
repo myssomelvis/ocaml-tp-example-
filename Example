@@ -1,0 +1,101 @@
+----->[calcule la somme d'une chaine / calculates the sum of a string
+let rec csc x = match x with ""->0 | x-> int_of_char((nth_char x 0)) + (csc (leReste x)) where leReste c =sub_string c 1 ((string_length c) - 1);;
+
+
+----->[calcule la longueur d’une chaîne de caractères / calculates the length of a string
+let decoup x =sub_string x 1 ((string_length x) - 1);;
+let rec longeur c =match c with "" -> 0 | c -> 1 + longeur (decoup c) ;;
+longeur "absdsfsfsf";;
+
+
+----->[calcule la moyenne d’une liste de valeurs / calculates the average of a list of values
+let rec sommeInt l =match l with []->0 | a::r ->a + (sommeInt r) ;;
+let rec sommeFloat l =match l with []->0. | a::r ->a +. (sommeFloat r) ;;
+let rec longeur x =match x with []->0 | tete ::reste -> 1+ longeur reste;; 
+let calculMoyListInt l = (sommeInt l) / (longeur l);;
+let calculMoyListFloat l = (sommeFloat l) /. float_of_int(longeur l) ;;
+
+
+----->[calcule la somme des éléments d’une liste d’entiers / calculates the sum of the elements of a list of integers
+let rec sommeE l =match l with []->0 | a::r ->a + sommeE r;;
+sommeE [1;2;3;4;5];;
+
+
+
+----->[calcule la somme des réels correspondant à des chaînes de caractères passées en paramètres  / computes the sum of the real numbers corresponding to strings passed in parameters
+let rec explose = fun "" -> [] | x -> (nth_char x 0) :: (explose (lasuite x))
+where lasuite c = sub_string c 1 ((string_length c) - 1);;
+let rec csc x = match x with ""->0 | x-> int_of_char((nth_char x 0)) + (csc (leReste x)) where leReste c =sub_string c 1 ((string_length c) - 1);;
+let rec sommeReel l = match l with []->0 | a::r -> (csc a) + (sommeReel r);;
+sommeReel ["A";"B"];;
+
+
+
+----->[calcule le pgcd de deux nombres  / calculates the pgcd of two numbers
+let rec pgcd n m = if n>m then pgcd m n else ( (if n=0 then m else let p=m/n and  r =m mod n in pgcd r n));;
+
+
+
+----->[calcule le ppcm de deux nombres / calculates the cfm of two numbers
+let rec ppcm a b = if a mod b =0 then a else (a  /(a mod b)) * ppcm b (a mod b );;
+ppcm 55 3;;
+
+
+
+----->[détermine le maximum d’une liste de valeurs
+let rec max_list l =match l with []-> -1 | tete::reste->max tete (max_list reste);; 
+max_list [1;2;3;5;56;6;4];;
+
+
+
+----->[détermine si un naturel est premier / determines if a natural is prime
+let rec nombreDiviseur l div= if div =1 then 1 else if (l mod div)= 0 then 1 + (nombreDiviseur l (div- 1)) else (nombreDiviseur l (div- 1));;
+nombreDiviseur 11 11;;
+let rec nombrePremier x = (nombreDiviseur x x) < 3 ;; 
+nombrePremier 23 ;;
+
+
+
+----->[détermine si une chaîne de caractère donnée est un palindrome / determines if a given string is a palindrome
+(*caml light code*)
+let palindromes c =
+let rec Rec_palindrome (r, t) =
+r>=t || (c.[r] = c.[t] && Rec_palindrome ((r+1),(t-1)))
+in Rec_palindrome (0, (string_length c - 1));;
+palindromes "radar" ;;
+
+
+
+----->[détermine si une chaîne de caractère donnée est un palindrome / determines if a given string is a palindrome
+(*ocaml version 4.02.3 code*)
+let palindromes c =
+let rec palindromeRec (r, t) =
+r>=t || (c.[r] = c.[t] && palindromeRec ((r+1),(t-1)))
+in palindromeRec (0, (String.length c - 1));;
+
+
+
+----->[donne un couple composé du maximum et du minimum d’une liste de valeurs / gives a couple composed of the maximum and minimum of a list of values
+let rec max_list l =match l with []-> -1 | tete::reste->max tete (max_list reste);; 
+max_list [1;2;3;5;56;6;4];;
+let rec min_list l =match l with []-> 1000 | tete::reste->min  tete (min_list reste);;
+min_list [1;6;56;65;65;654;4;4;8;5;1;0];;
+
+
+
+----->[fait la concaténation des éléments d’une liste / concatenates the elements of a list
+let rec concat l =match l with []->"" | a::r -> a^ concat r ;;
+concat ["abc";"a";"2";"1"];;
+
+
+
+----->[inverse une liste / reverses a list
+let rec inverse l =match l with []->[] | a::r -> (inverse r) @[a];; 
+inverse [1;4;4];;
+
+
+
+
+
+
+
